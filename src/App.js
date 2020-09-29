@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+
+import "./App.css";
 
 function App() {
+  const [result, setResult] = useState([]);
+  const api_url = "https://localhost:5001/api/users";
+
+  useEffect(() => {
+    const getUsers = () => {
+      fetch(api_url)
+        .then((res) => res.json())
+        .then((json) => {
+          console.log("json result: ", json);
+          setResult(json);
+        })
+        .catch((error) => {
+          console.error("opps error in fetching api", error);
+        });
+    };
+    getUsers();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Mentor App</h1>
+      {result.map((u) => (
+        <li key={u.id}>
+          {u.id} - {u.userName}
+        </li>
+      ))}
     </div>
   );
 }
