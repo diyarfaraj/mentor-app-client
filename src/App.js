@@ -3,8 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 
 import "./App.css";
-import MianNavbar from "./component/navbar/mainNavbar";
-import HomePage from "./component/home/homePage";
+import MianNavbar from "./components/navbar/mainNavbar";
 
 function App() {
   return (

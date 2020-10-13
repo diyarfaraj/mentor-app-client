@@ -3,14 +3,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import NavItem from "react-bootstrap/NavItem";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import LoginPage from "./loginPage";
-import HomePage from "../home/homePage";
+import LoginPage from "../../pages/loginPage";
+import HomePage from "../../pages/homePage";
 
 const MianNavbar = () => {
   return (
@@ -18,7 +15,7 @@ const MianNavbar = () => {
       <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand as={Link} to="/">
+            <Navbar.Brand as={Link} to="/homePage">
               Mentor App
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -29,11 +26,7 @@ const MianNavbar = () => {
                     Home
                   </Nav.Link>
                 </NavItem>
-                <NavItem eventkey={2} href="/loginPage">
-                  <Nav.Link as={Link} to="/loginPage">
-                    Login
-                  </Nav.Link>
-                </NavItem>
+
                 <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
@@ -48,14 +41,13 @@ const MianNavbar = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
-              {/*    <Form inline>
-                <FormControl
-                  type="text"
-                  placeholder="Search"
-                  className="mr-sm-2"
-                />
-                <Button variant="outline-success">Search</Button>
-              </Form> */}
+              <Nav>
+                <NavItem eventkey={2} href="/loginPage">
+                  <Nav.Link as={Link} to="/loginPage">
+                    Login
+                  </Nav.Link>
+                </NavItem>
+              </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
